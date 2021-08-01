@@ -5,17 +5,22 @@ function Todolist() {
 
     const [todos, setTodos] = useState(["use State", "Use props", "Create components", "Mastering ReactJS"])
 
-    setTimeout(() => {
+/*     setTimeout(() => {
         setTodos(["Use props", "Create components", "Mastering ReactJS"])
-        }, 2000);
+        }, 2000); */ // Changing the array after 2 seconds
+
+    
 
     return (
-        <ul>
-            {todos.map(todo => {
-                return <Todoitem todo={todo} />;
-                })
+        <div>
+            <button onClick={() => setTodos(["Nice job"])}>I've done all of this</button>
+            <ul>
+                {todos.map(todo => {
+                    return <Todoitem todo={todo} />;
+                    })
             }
-        </ul>
+            </ul>
+        </div>
     )
 }
 
