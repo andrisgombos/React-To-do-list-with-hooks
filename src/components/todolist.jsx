@@ -3,7 +3,14 @@ import Todoitem from "./todoitem";
 
 function Todolist() {
 
-    const [todos, setTodos] = useState(["use State", "Use props", "Create components", "Mastering ReactJS"])
+    const basicTodos = ["use State", "Use props", "Create components", "Mastering ReactJS"]
+
+    const [todos, setTodos] = useState(basicTodos);
+    const [userInput, setUserInput] = useState('');
+
+    const handleChange = (e) => {setUserInput(e.currentTarget.value)}
+    const handleSubmit = (e) => { e.preventDefault(); setTodos([""])}
+
 
 /*     setTimeout(() => {
         setTodos(["Use props", "Create components", "Mastering ReactJS"])
@@ -13,13 +20,16 @@ function Todolist() {
 
     return (
         <div>
-            <button onClick={() => setTodos(["Nice job"])}>I've done all of this</button>
-            <ul>
-                {todos.map(todo => {
-                    return <Todoitem todo={todo} />;
-                    })
-            }
-            </ul>
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="add Todo" value={userInput} onChange={handleChange}></input>
+                <ul>
+                    {todos.map(todo => {
+                        return <Todoitem todo={todo} />;
+                        })
+                }
+                </ul>
+                <button type="submit">Add this</button>
+            </form>
         </div>
     )
 }
