@@ -1,7 +1,9 @@
+import './todolist.css';
+
 function Todoitem(props) {
 
     return (
-        <li>{props.todo.text}</li>
+        <div className="todoitem">{props.todo.text}</div>
     )
 }
 

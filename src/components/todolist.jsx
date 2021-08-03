@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Todoitem from "./todoitem";
+import './todolist.css';
 
 function Todolist() {
 
@@ -20,16 +21,15 @@ function Todolist() {
         }
 
     return (
-        <div>
+        <div className="todolist">
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="add Todo" value={value} onChange={e => setValue(e.target.value)}></input>
-                <ul>
+                <div>
                     {todos.map(todo => {
                         return <Todoitem todo={todo} />;
                         })
                 }
-                </ul>
-                <button type="submit">Add this</button>
+                </div>
+                <input type="text" placeholder="Add a new item" value={value} onChange={e => setValue(e.target.value)}></input>
             </form>
         </div>
     )

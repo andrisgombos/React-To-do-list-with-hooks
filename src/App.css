@@ -1,3 +1,9 @@
-.App {
-  text-align: center;
+body {
+  background: #209cee;
+  height: 100vh;
+  padding: 30px;
+}
+
+h1, h2 {
+  color: #fff;
 }
