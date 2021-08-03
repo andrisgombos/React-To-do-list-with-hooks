@@ -1,7 +1,7 @@
 function Todoitem(props) {
 
     return (
-        <li>{props.todo}</li>
+        <li>{props.todo.text}</li>
     )
 }
 

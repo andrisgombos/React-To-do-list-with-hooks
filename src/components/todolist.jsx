@@ -3,25 +3,26 @@ import Todoitem from "./todoitem";
 
 function Todolist() {
 
-    const basicTodos = ["use State", "Use props", "Create components", "Mastering ReactJS"]
+    const [todos, setTodos] = useState([{text: "Use State"}, {text: "Use props"}, {text: "Create components"}, {text: "Mastering ReactJS"}]);
+    const [value, setValue] = useState('');
 
-    const [todos, setTodos] = useState(basicTodos);
-    const [userInput, setUserInput] = useState('');
+    const addTodo = text => {
+        const newTodos = [...todos, {text}];
+        setTodos(newTodos)
+    }
 
-    const handleChange = (e) => {setUserInput(e.currentTarget.value)}
-    const handleSubmit = (e) => { e.preventDefault(); setTodos([""])}
-
-
-/*     setTimeout(() => {
-        setTodos(["Use props", "Create components", "Mastering ReactJS"])
-        }, 2000); */ // Changing the array after 2 seconds
-
-    
+    /* const handleChange = (e) => {(e.currentTarget.value)} */
+    const handleSubmit = (e) => { 
+        e.preventDefault(); 
+        if (!value) return;
+        addTodo(value)
+        setValue("");
+        }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="add Todo" value={userInput} onChange={handleChange}></input>
+                <input type="text" placeholder="add Todo" value={value} onChange={e => setValue(e.target.value)}></input>
                 <ul>
                     {todos.map(todo => {
                         return <Todoitem todo={todo} />;
